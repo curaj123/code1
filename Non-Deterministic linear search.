@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void linear_search(int a[],int n,int x){
+	srand(time(NULL));
+	int lower = 0, upper = n-1;
+	int rn = (rand() % (upper - lower + 1)) + lower;  
+	printf(" randomly selected number is :%d \n",a[rn]);
+	if(rn==x){
+		printf(" The given number is present in the array st index :%d ",rn);
+	} 
+	else{
+		printf(" The given number is not present in the given array  ");
+	}
+	
+}
+
+int main(){
+	int a[10]={23,56,43,78,45,21,32,67,87,3};
+    int x ;
+    printf(" enter the number you want to search :");
+    scanf("%d",&x);
+    linear_search(a,10,x);
+    
+	
+} 
