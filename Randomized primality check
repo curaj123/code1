@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void procedurePtesting(int n, int k)
+{
+	int i = 1;
+	int r, remain;
+l:
+	r = rand() % (n - 1);
+	remain = n % r;
+	if (remain == 0)
+		goto out;
+	i++;
+	
+	if (i <= k)
+		goto l;
+	printf("%d is prime", n);
+	return;
+out:
+	printf("%d is composite", n);
+	return;
+}
+int main()
+
+  
+{
+	int n, k;
+	scanf("%d", &n, printf("Enter the number to test the primality :"));
+	scanf("%d", &k, printf("Enter the number of iterations :"));
+	procedurePtesting(n, k);
+}
