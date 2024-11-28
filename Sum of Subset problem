@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+void findSubsets(int arr[], int n, int index, int currentSum, int targetSum, int subset[], int subsetSize) {
+    // Base case: if currentSum is equal to targetSum, print the subset
+    if (currentSum == targetSum) {
+        printf("{ ");
+        for (int i = 0; i < subsetSize; i++) {
+            printf("%d ", subset[i]);
+        }
+        printf("}\n");
+        return;
+    }
+
+    // If currentSum exceeds targetSum or no more elements to process
+    if (currentSum > targetSum || index == n) {
+        return;
+    }
+
+    // Include the current element in the subset
+    subset[subsetSize] = arr[index];
+    findSubsets(arr, n, index + 1, currentSum + arr[index], targetSum, subset, subsetSize + 1);
+
+    // Exclude the current element from the subset
+    findSubsets(arr, n, index + 1, currentSum, targetSum, subset, subsetSize);
+}
+
+int main() {
+    int arr[] = {3, 34, 4, 12, 5, 2};
+    int targetSum = 9;
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int subset[n]; // Array to hold the current subset
+
+    printf("Subsets with sum %d:\n", targetSum);
+    findSubsets(arr, n, 0, 0, targetSum, subset, 0);
+
+    return 0;
+}
