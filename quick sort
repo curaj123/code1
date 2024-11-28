@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+int a[5] = {3, 1, 6, 2, 7};
+
+void interchange(int i, int j)
+{
+    int temp = a[i];
+    a[i] = a[j];
+    a[j] = temp;
+}
+
+int partition(int a[], int m, int h)
+{
+    int v = a[m]; 
+    int i = m + 1;
+    int j = h;
+
+    while (i <= j)
+    {
+        while (i <= h && a[i] <= v)
+        {
+            i = i + 1;
+        }
+        while (j >= m && a[j] > v)
+        {
+            j = j - 1;
+        }
+        if (i < j)
+        {
+            interchange(i, j); 
+        }
+    }
+
+    interchange(m, j);  
+    return j;
+}
+
+void quick_sort(int p, int q)
+{
+    if (p < q)
+    {
+        int j = partition(a, p, q);
+        quick_sort(p, j - 1);  
+        quick_sort(j + 1, q);  
+    }
+}
+
+int main()
+{ 
+    quick_sort(0, 4);  
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d ", a[i]);  
+    }
+
+    return 0;
+}
