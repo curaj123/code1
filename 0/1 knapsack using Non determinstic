@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include <time.h>
+
+
+void ND_knapsack(int w[],int p[],int M, int k){ 
+    srand(time(NULL));
+    int n = 5;
+    int x[5];
+    for(int i=0;i<5;i++){
+    	x[i]=rand()%2;
+	} 
+	int wi=0;
+	int pi=0;
+	for(int i=0;i<5;i++){
+		int j=x[i];
+			 wi= wi + w[i]*j;
+			pi= pi + p[i]*j;
+		
+	} 
+	printf("\n%d ",wi);
+	printf("%d\n",pi);
+	if(wi>M && pi<k){
+		printf(" failure\n");
+	} 
+	else{
+		printf(" success\n");
+	}
+	for(int i=0;i<5;i++){
+		printf("%d ",x[i]);
+	}  
+	
+	
+	
+}
+int main(){
+	int w[5]={3,5,8,10,12};
+	int p[5]={6,9,10,13,15}; 
+	int M=15;
+	int k=30;
+	ND_knapsack(w,p,M,k);
+	
+}
